@@ -1,0 +1,23 @@
+<p>employee-comp works!</p>
+Employee Number : <input type="text" [(ngModel)]="emp.empNo"/><br/>
+Employee Name : <input type="text" [(ngModel)]="emp.eName"/><br/>
+Employee Salary : <input type="text" [(ngModel)]="emp.salary"/><br/>
+<button (click)="add()">Add</button>
+<button (click)="viewAll()">View All</button>
+{{emp | json}}
+{{empArray | json}}
+<table bgcolor="cyan" border="1" *ngIf="empArray.length">
+    <th>EmpNo</th>
+    <th>EmpName</th>
+    <th>Salary</th>
+    <th>Index</th>
+    <th>Delete?</th>
+    <tr *ngFor="let e of empArray;index as i">
+        
+        <td>{{e.empNo}}</td>
+        <td>{{e.eName}}</td>
+        <td>{{e.salary | currency : 'INR'}}</td>
+        <td>{{i}}</td>
+        <td><button (click)="delete(i)">Delete{{i}}</button></td>
+    </tr>
+</table>
